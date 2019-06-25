@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Input, Segment, Icon, Button, Dropdown } from "semantic-ui-react";
+import { Input, Button, Dropdown, Message } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../assets/register.jpg";
 import Flip from "react-reveal/Flip";
@@ -16,28 +17,34 @@ const Register = () => {
     { key: 2, text: "Helper", value: 2 },
     { key: 3, text: "Admin", value: 3 }
   ];
+
   return (
     <RegisterScreen>
       <Flip left>
         <RegisterCard>
           {/* <Icon name="registered" size="huge" bordered style={{ margin: 10 }} /> */}
+
           <Form>
+            <h1>HelpDesk Register</h1>
             <InputWrapper
               icon="users"
               iconPosition="left"
               placeholder="username"
+              onChange={e => setUsername(e.target.value)}
             />
             <InputWrapper
               icon="mail"
               iconPosition="left"
               placeholder="email"
               type="mail"
+              onChange={e => setEmail(e.target.value)}
             />
             <InputWrapper
               icon="lock"
               iconPosition="left"
               placeholder="pasword"
               type="password"
+              onChange={e => setPassword(e.target.value)}
             />
             <Dropdown
               button
@@ -47,14 +54,25 @@ const Register = () => {
               icon="world"
               selection
               options={options}
+              onChange={e => setRole(e.target.textContent)}
               placeholder="your role"
             />
             <Button color="purple" size="small" style={{ width: 150 }}>
               Register
             </Button>
+            <Message>
+              Aleardy a user? <Link to="/login">Login</Link>
+            </Message>
           </Form>
         </RegisterCard>
       </Flip>
+      <Content>
+        Students at lambda school need a place where they can escalate their
+        concerns and receive help. This app allows an admin to manage help desk
+        tickets that come in from Lambda School Students. It also allows
+        students (A 2nd user type) to submit a help desk ticket, categorize it
+        and post it to the help channel.
+      </Content>
     </RegisterScreen>
   );
 };
@@ -63,6 +81,7 @@ export default Register;
 
 const RegisterScreen = styled.div`
   display: flex;
+  position:relative
   height: 100vh;
   width: 100%;
   justify-content: center;
@@ -75,7 +94,7 @@ const RegisterScreen = styled.div`
 const RegisterCard = styled.div`
   height: 600px;
   width: 600px;
-  border: 10px solid ${theme.color.accentPurple};
+  border: 10px solid ${theme.color.lightGreen};
   border-radius: 50%;
   background: ${theme.color.accentGreen};
   opacity: 0.6;
@@ -91,4 +110,17 @@ const Form = styled.form`
 
 const InputWrapper = styled(Input)`
   width: 300px;
+`;
+
+const Content = styled.div`
+  padding: 20px 40px;
+  position: absolute;
+  right: 5%;
+  bottom: 7%;
+  width: 300px;
+  text-align: justify;
+  text-shadow: ${theme.shadow.buttonShadow};
+  color: ${theme.color.textColor};
+  letter-spacing: 1px;
+  line-height: 1.4;
 `;
