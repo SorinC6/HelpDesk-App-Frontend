@@ -13,7 +13,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const isFormEmpty = () => {
-    debugger;
     if (username.length === 0 || password.length === 0) {
       return true;
     } else {
@@ -22,7 +21,6 @@ const Login = () => {
   };
 
   const formValid = () => {
-    debugger;
     if (isFormEmpty()) {
       setError("Please fill all the fields");
     } else {
@@ -62,12 +60,34 @@ const Login = () => {
             <Button color="purple" size="small" style={{ width: 150 }}>
               Login
             </Button>
+            {error && (
+              <Message error>
+                <div>
+                  <p>{error}</p>
+                </div>
+              </Message>
+            )}
             <Message>
               Don't have an account? <Link to="/register">Register</Link>
             </Message>
           </Form>
         </RegisterCard>
       </Flip>
+      <Content>
+        <p>
+          As a student I want to log in and have the ability to see tickets that
+          are currently open for help. As a student I want to be able to create
+          a new help ticket with a title, description, what I've tried and a
+          category (i.e. React).{" "}
+        </p>
+        <p>
+          As a helper I want to be able to login and see a list of open tickets.
+          As a helper I want to be able to assign a ticket to myself by clicking
+          a "help student" button. As a helper I want to be able to mark the
+          ticket as "resolved", or re-assign the ticket back to the queue if I
+          cannot resolve the ticket.
+        </p>
+      </Content>
     </RegisterScreen>
   );
 };
@@ -105,4 +125,17 @@ const Form = styled.form`
 const InputWrapper = styled(Input)`
   width: 300px;
   margin: 20px;
+`;
+
+const Content = styled.div`
+  padding: 20px 40px;
+  position: absolute;
+  right: 5%;
+  bottom: 7%;
+  width: 300px;
+  text-align: justify;
+  text-shadow: ${theme.shadow.buttonShadow};
+  color: ${theme.color.textColor};
+  letter-spacing: 1px;
+  line-height: 1.4;
 `;
