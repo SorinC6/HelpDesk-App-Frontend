@@ -3,6 +3,7 @@ import { Input, Segment, Icon, Button, Dropdown } from "semantic-ui-react";
 import styled from "styled-components";
 import bg from "../assets/register.jpg";
 import Flip from "react-reveal/Flip";
+import theme from "../theme/styledTheme";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -10,26 +11,11 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("student");
 
-  const dropDownOption = () => {
-    return [
-      {
-        key: "user",
-        text: (
-          <span>
-            <strong>Student</strong>
-          </span>
-        )
-      },
-      {
-        key: "avatar",
-        text: <span>Helper</span>
-      },
-      {
-        key: "signout",
-        text: <span>Admin</span>
-      }
-    ];
-  };
+  const options = [
+    { key: 1, text: "Student", value: 1 },
+    { key: 2, text: "Helper", value: 2 },
+    { key: 3, text: "Admin", value: 3 }
+  ];
   return (
     <RegisterScreen>
       <Flip left>
@@ -59,9 +45,9 @@ const Register = () => {
               floating
               labeled
               icon="world"
-              search
-              text="Select Role"
-              options={dropDownOption()}
+              selection
+              options={options}
+              placeholder="your role"
             />
             <Button color="purple" size="small" style={{ width: 150 }}>
               Register
@@ -89,10 +75,11 @@ const RegisterScreen = styled.div`
 const RegisterCard = styled.div`
   height: 600px;
   width: 600px;
-  border: 1px solid blue;
+  border: 10px solid ${theme.color.accentPurple};
   border-radius: 50%;
-  background: green;
+  background: ${theme.color.accentGreen};
   opacity: 0.6;
+  box-shadow: ${theme.shadow.cardShadow};
 `;
 const Form = styled.form`
   display: flex;
