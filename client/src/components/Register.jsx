@@ -11,6 +11,8 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("student");
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const options = [
     { key: 1, text: "Student", value: 1 },
@@ -18,13 +20,40 @@ const Register = () => {
     { key: 3, text: "Admin", value: 3 }
   ];
 
+  const isFormEmpty = () => {
+    debugger;
+    if (email.length === 0 || username.length === 0 || password.length === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const formValid = () => {
+    debugger;
+    if (isFormEmpty()) {
+      setError("Please fill all the fields");
+    } else {
+      setError(null);
+      return true;
+    }
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (formValid()) {
+      setError("");
+      console.log("Yess");
+    }
+  };
+
   return (
     <RegisterScreen>
       <Flip left>
         <RegisterCard>
           {/* <Icon name="registered" size="huge" bordered style={{ margin: 10 }} /> */}
 
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <h1>HelpDesk Register</h1>
             <InputWrapper
               icon="users"
@@ -57,9 +86,21 @@ const Register = () => {
               onChange={e => setRole(e.target.textContent)}
               placeholder="your role"
             />
-            <Button color="purple" size="small" style={{ width: 150 }}>
+            <Button
+              color="purple"
+              size="small"
+              style={{ width: 150 }}
+              type="submit"
+            >
               Register
             </Button>
+            {error && (
+              <Message error>
+                <div>
+                  <p>{error}</p>
+                </div>
+              </Message>
+            )}
             <Message>
               Aleardy a user? <Link to="/login">Login</Link>
             </Message>
