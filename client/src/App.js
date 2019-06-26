@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import { registerUser, loginUser } from "./store/actions/authActions";
 
 function App({ registerUser, loginUser, loading, error }) {
-  console.log("ERROROROR ",error)
+  console.log("ERROROROR ", error);
   return (
     <div>
       <div>
@@ -37,7 +37,7 @@ function App({ registerUser, loginUser, loading, error }) {
           )}
         />
 
-        <PrivateRoute path="/" component={Home} />
+        <PrivateRoute exact path="/" component={Home} />
       </div>
     </div>
   );

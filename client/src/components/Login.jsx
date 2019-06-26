@@ -5,12 +5,13 @@ import styled from "styled-components";
 import bg from "../assets/login.jpg";
 import Flip from "react-reveal/Flip";
 import theme from "../theme/styledTheme";
+import { Ring } from "react-awesome-spinners";
 
-const Login = ({ loginUser, history }) => {
+const Login = ({ loginUser, history, loading, error }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [errorInput, setError] = useState(null);
+  // const [loading, setLoading] = useState(false);
 
   const isFormEmpty = () => {
     if (username.length === 0 || password.length === 0) {
@@ -66,16 +67,19 @@ const Login = ({ loginUser, history }) => {
               size="small"
               style={{ width: 150 }}
               type="submit"
+              loading={loading}
             >
               Login
             </Button>
-            {error && (
+            {errorInput && (
               <Message error>
                 <div>
-                  <p>{error}</p>
+                  <p>{errorInput}</p>
                 </div>
               </Message>
             )}
+            {loading && <Ring />}
+            {error && <Message>{error}</Message>}
             <Message>
               Don't have an account? <Link to="/register">Register</Link>
             </Message>
