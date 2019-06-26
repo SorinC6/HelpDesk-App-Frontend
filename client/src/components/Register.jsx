@@ -6,7 +6,7 @@ import bg from "../assets/register.jpg";
 import Flip from "react-reveal/Flip";
 import theme from "../theme/styledTheme";
 
-const Register = () => {
+const Register = ({ registerUser, history }) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +21,6 @@ const Register = () => {
   ];
 
   const isFormEmpty = () => {
-    debugger;
     if (email.length === 0 || username.length === 0 || password.length === 0) {
       return true;
     } else {
@@ -30,7 +29,6 @@ const Register = () => {
   };
 
   const formValid = () => {
-    debugger;
     if (isFormEmpty()) {
       setError("Please fill all the fields");
     } else {
@@ -43,7 +41,17 @@ const Register = () => {
     e.preventDefault();
     if (formValid()) {
       setError("");
-      console.log("Yess");
+
+      console.log({ email, username, password, role_id: 1 });
+      registerUser({ email, username, password, role_id: 1 }).then(res => {
+        debugger;
+        console.log(res);
+        if (res === 422) {
+          return;
+        } else if (res === 200) {
+          history.push("/login");
+        }
+      });
     }
   };
 
@@ -122,7 +130,7 @@ export default Register;
 
 const RegisterScreen = styled.div`
   display: flex;
-  position:relative;
+  position: relative;
   height: 100vh;
   width: 100%;
   justify-content: center;

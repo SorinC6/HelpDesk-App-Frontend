@@ -16,16 +16,12 @@ const loadingStop = () => {
 
 export const registerUser = userData => dispatch => {
   dispatch(loadingStart());
-  axios
+  return axios
     .post(`${url.registerUrl}`, userData)
     .then(res => {
-      debugger;
+      return res.status;
     })
     .catch(err => {
-      debugger;
-    })
-    .finally(() => {
-      debugger;
-      dispatch(loadingStop());
+      return err.response.status;
     });
 };

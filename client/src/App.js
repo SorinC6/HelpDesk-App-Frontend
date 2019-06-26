@@ -9,7 +9,6 @@ import { connect } from "react-redux";
 import { registerUser } from "./store/actions/authActions";
 
 function App({ registerUser }) {
-  debugger;
   return (
     <div>
       <div>
