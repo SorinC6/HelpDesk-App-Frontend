@@ -14,7 +14,7 @@ const loadingStop = () => {
   };
 };
 
-export const register = userData => dispatch => {
+export const registerUser = userData => dispatch => {
   dispatch(loadingStart());
   axios
     .post(`${url.registerUrl}`, userData)
