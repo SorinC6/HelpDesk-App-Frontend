@@ -44,6 +44,7 @@ export const loginUser = userData => dispatch => {
       debugger; //payload:res.data
       localStorage.setItem("token", res.data);
       dispatch({ type: types.LOGIN_SUCCESS, payload: res.token });
+      return res.status;
     })
     .catch(err => {
       debugger; //payload: err.response.data.message

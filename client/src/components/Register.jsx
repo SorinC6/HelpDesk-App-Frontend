@@ -44,7 +44,6 @@ const Register = ({ registerUser, history }) => {
 
       console.log({ email, username, password, role_id: 1 });
       registerUser({ email, username, password, role_id: 1 }).then(res => {
-        debugger;
         console.log(res);
         if (res === 422) {
           return;

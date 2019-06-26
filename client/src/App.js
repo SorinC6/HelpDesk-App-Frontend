@@ -27,7 +27,7 @@ function App({ registerUser, loginUser }) {
 }
 
 const mapStateToProps = state => {
-  debugger;
+  //debugger;
   return {};
 };
 

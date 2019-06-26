@@ -6,7 +6,7 @@ import bg from "../assets/login.jpg";
 import Flip from "react-reveal/Flip";
 import theme from "../theme/styledTheme";
 
-const Login = ({ loginUser }) => {
+const Login = ({ loginUser, history }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -22,21 +22,23 @@ const Login = ({ loginUser }) => {
 
   const formValid = () => {
     if (isFormEmpty()) {
-      debugger
       setError("Please fill all the fields");
     } else {
       setError(null);
-      debugger;
-      loginUser({ username, password });
+      return true;
     }
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    debugger;
     if (formValid()) {
-      setError("");
-      debugger;
+      setError(null);
+      loginUser({ username, password }).then(status => {
+        debugger;
+        if (status === 200) {
+          history.push("/");
+        }
+      });
     }
   };
 
