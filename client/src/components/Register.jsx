@@ -5,6 +5,7 @@ import styled from "styled-components";
 import bg from "../assets/register.jpg";
 import Flip from "react-reveal/Flip";
 import theme from "../theme/styledTheme";
+import { Ring } from "react-awesome-spinners";
 
 const Register = ({ registerUser, history, error, loading }) => {
   const [email, setEmail] = useState("");
@@ -13,6 +14,7 @@ const Register = ({ registerUser, history, error, loading }) => {
   const [role, setRole] = useState("student");
   const [errorInput, setError] = useState(null);
   // const [loading, setLoading] = useState(false);
+  console.log(error);
 
   const options = [
     { key: 1, text: "Student", value: 1 },
@@ -98,6 +100,7 @@ const Register = ({ registerUser, history, error, loading }) => {
               size="small"
               style={{ width: 150 }}
               type="submit"
+              loading={loading}
             >
               Register
             </Button>
@@ -108,6 +111,8 @@ const Register = ({ registerUser, history, error, loading }) => {
                 </div>
               </Message>
             )}
+            {loading && <Ring />}
+            {error && <Message>{error}</Message>}
             <Message>
               Aleardy a user? <Link to="/login">Login</Link>
             </Message>

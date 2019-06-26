@@ -34,7 +34,6 @@ const Login = ({ loginUser, history }) => {
     if (formValid()) {
       setError(null);
       loginUser({ username, password }).then(status => {
-        debugger;
         if (status === 200) {
           history.push("/");
         }

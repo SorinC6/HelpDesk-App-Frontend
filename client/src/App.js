@@ -9,10 +9,11 @@ import { connect } from "react-redux";
 import { registerUser, loginUser } from "./store/actions/authActions";
 
 function App({ registerUser, loginUser, loading, error }) {
+  console.log("ERROROROR ",error)
   return (
     <div>
       <div>
-        <Route exact path="/" component={Home} />
+        {/* <Route exact path="/" component={Home} /> */}
         <Route
           path="/register"
           render={props => (
@@ -35,6 +36,8 @@ function App({ registerUser, loginUser, loading, error }) {
             />
           )}
         />
+
+        <PrivateRoute path="/" component={Home} />
       </div>
     </div>
   );
@@ -42,7 +45,7 @@ function App({ registerUser, loginUser, loading, error }) {
 
 const mapStateToProps = state => {
   return {
-    loading: state.authReducer.error,
+    loading: state.authReducer.loading,
     error: state.authReducer.error
   };
 };
