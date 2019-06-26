@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header";
-import TicketList from "./Ticket";
+import TicketList from "./TicketList";
 
 const Home = () => {
   return (
