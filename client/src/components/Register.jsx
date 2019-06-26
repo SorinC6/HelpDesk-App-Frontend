@@ -122,7 +122,7 @@ export default Register;
 
 const RegisterScreen = styled.div`
   display: flex;
-  position:relative
+  position:relative;
   height: 100vh;
   width: 100%;
   justify-content: center;
