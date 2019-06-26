@@ -1,19 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../theme/styledTheme";
+import Field from "../utils/Field";
 
 const Ticket = () => {
   return (
     <MainWrapper>
-      <TitleWrapper>
-        <p />
-      </TitleWrapper>
-      <CategoryWrapper>
-        <p />
-      </CategoryWrapper>
-      <UserWrapper>
-        <p></p>
-      </UserWrapper>
+      <Field name="Title" backgroundColor={`${theme.color.lightGreen}`} />
+      <Field
+        name="Category"
+        backgroundColor={`${theme.color.secondaryPurple}`}
+      />
+      <Field name="User" backgroundColor={`${theme.color.accentGreen}`} />
+      <Field name="Status" backgroundColor={`${theme.color.accentPurple}`} />
     </MainWrapper>
   );
 };
@@ -33,19 +32,36 @@ const MainWrapper = styled.div`
   justify-content: space-between;
   flex-direction: column;
   overflow: hidden;
+  cursor: pointer;
 `;
 
-const TitleWrapper = styled.div`
-  height: 30%;
-  background-color: red;
-`;
+// const TitleWrapper = styled.div`
+//   height: 30%;
+//   background-color: ${theme.color.lightGreen};
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
 
-const CategoryWrapper = styled.div`
-  height: 30%;
-  background-color: green;
-`;
+// const CategoryWrapper = styled.div`
+//   height: 30%;
+//   background-color: ${theme.color.accentPurple};
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
 
-const UserWrapper = styled.div`
-  height: 30%;
-  background-color: green;
-`;
+// const UserWrapper = styled.div`
+//   height: 30%;
+//   background-color: ${theme.color.accentGreen};
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
+// const StatusWrapper = styled.div`
+//   height: 30%;
+//   background-color: ${theme.color.lightPurple};
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
