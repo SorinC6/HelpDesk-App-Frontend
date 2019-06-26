@@ -113,6 +113,11 @@ const RegisterScreen = styled.div`
   background-image: url(${bg});
   background-repeat: no-repeat;
   background-size: cover;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    height: 100%;
+  }
 `;
 
 const RegisterCard = styled.div`
@@ -148,4 +153,12 @@ const Content = styled.div`
   color: ${theme.color.textColor};
   letter-spacing: 1px;
   line-height: 1.4;
+
+  @media (max-width: 1000px) {
+    position: relative;
+    max-width: 500px;
+    margin: 10px auto;
+    background-color: ${theme.color.lightPurple};
+    opacity: 0.7;
+  }
 `;

@@ -6,13 +6,13 @@ import bg from "../assets/register.jpg";
 import Flip from "react-reveal/Flip";
 import theme from "../theme/styledTheme";
 
-const Register = ({ registerUser, history }) => {
+const Register = ({ registerUser, history, error, loading }) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("student");
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [errorInput, setError] = useState(null);
+  // const [loading, setLoading] = useState(false);
 
   const options = [
     { key: 1, text: "Student", value: 1 },
@@ -101,10 +101,10 @@ const Register = ({ registerUser, history }) => {
             >
               Register
             </Button>
-            {error && (
+            {errorInput && (
               <Message error>
                 <div>
-                  <p>{error}</p>
+                  <p>{errorInput}</p>
                 </div>
               </Message>
             )}
@@ -135,8 +135,13 @@ const RegisterScreen = styled.div`
   justify-content: center;
   align-items: center;
   background-image: url(${bg});
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   background-size: cover;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    height: 100%;
+  }
 `;
 
 const RegisterCard = styled.div`
@@ -147,6 +152,10 @@ const RegisterCard = styled.div`
   background: ${theme.color.accentGreen};
   opacity: 0.6;
   box-shadow: ${theme.shadow.cardShadow};
+  @media (max-width: 1000px) {
+    height: 550px;
+    width: 550px;
+  }
 `;
 const Form = styled.form`
   display: flex;
@@ -171,4 +180,10 @@ const Content = styled.div`
   color: ${theme.color.textColor};
   letter-spacing: 1px;
   line-height: 1.4;
+
+  @media (max-width: 1000px) {
+    position: relative;
+    max-width: 500px;
+    margin: 10px auto;
+  }
 `;
