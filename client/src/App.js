@@ -6,9 +6,9 @@ import { Route } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import Home from "./components/Home";
 import { connect } from "react-redux";
-import { registerUser } from "./store/actions/authActions";
+import { registerUser, loginUser } from "./store/actions/authActions";
 
-function App({ registerUser }) {
+function App({ registerUser, loginUser }) {
   return (
     <div>
       <div>
@@ -17,18 +17,23 @@ function App({ registerUser }) {
           path="/register"
           render={props => <Register {...props} registerUser={registerUser} />}
         />
-        <Route path="/login" render={props => <Login {...props} />} />
+        <Route
+          path="/login"
+          render={props => <Login {...props} loginUser={loginUser} />}
+        />
       </div>
     </div>
   );
 }
 
 const mapStateToProps = state => {
+  debugger;
   return {};
 };
 
 const mapDispatchToProps = {
-  registerUser
+  registerUser,
+  loginUser
 };
 
 export default connect(

@@ -6,7 +6,7 @@ import bg from "../assets/login.jpg";
 import Flip from "react-reveal/Flip";
 import theme from "../theme/styledTheme";
 
-const Login = () => {
+const Login = ({ loginUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -22,19 +22,21 @@ const Login = () => {
 
   const formValid = () => {
     if (isFormEmpty()) {
+      debugger
       setError("Please fill all the fields");
     } else {
       setError(null);
-      return true;
+      debugger;
+      loginUser({ username, password });
     }
   };
 
   const handleSubmit = e => {
     e.preventDefault();
+    debugger;
     if (formValid()) {
       setError("");
-      debugger
-      
+      debugger;
     }
   };
 
@@ -58,7 +60,12 @@ const Login = () => {
               type="password"
               onChange={e => setPassword(e.target.value)}
             />
-            <Button color="purple" size="small" style={{ width: 150 }}>
+            <Button
+              color="purple"
+              size="small"
+              style={{ width: 150 }}
+              type="submit"
+            >
               Login
             </Button>
             {error && (

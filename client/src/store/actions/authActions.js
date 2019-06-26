@@ -25,7 +25,10 @@ export const registerUser = userData => dispatch => {
     })
     .catch(err => {
       debugger;
-      dispatch({ type: types.REGISTER_FAIL, payload: err.response });
+      dispatch({
+        type: types.REGISTER_FAIL,
+        payload: err.response.data.message
+      });
       return err.response.status;
     })
     .finally(() => {
@@ -38,10 +41,15 @@ export const loginUser = userData => dispatch => {
   return axios
     .post(`${url.loginUrl}`, userData)
     .then(res => {
-      debugger;
+      debugger; //payload:res.data
+      localStorage.setItem("token", res.data);
+      dispatch({ type: types.LOGIN_SUCCESS, payload: res.token });
     })
     .catch(err => {
-      debugger;
+      debugger; //payload: err.response.data.message
+      dispatch({ type: types.LOGIN_FAIL, payload: err.response.data.message });
     })
-    .finally();
+    .finally(() => {
+      dispatch(loadingStop());
+    });
 };
