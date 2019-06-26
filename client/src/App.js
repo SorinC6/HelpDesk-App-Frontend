@@ -6,6 +6,7 @@ import { Route } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import Home from "./components/Home";
 
+
 function App() {
   return (
     <div>
