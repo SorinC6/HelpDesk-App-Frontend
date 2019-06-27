@@ -39,15 +39,24 @@ const Register = ({ registerUser, history, error, loading }) => {
     }
   };
 
-  const fromStringToNumber
+  const fromStringToNumber = string => {
+    switch (string) {
+      case "Student":
+        return 1;
+      case "Helper":
+        return 2;
+      case "Admin":
+        return 3;
+    }
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
     if (formValid()) {
       setError("");
-
-      console.log({ email, username, password, role_id: 1 });
-      registerUser({ email, username, password, role_id: 1 }).then(res => {
+      const roleNr = fromStringToNumber(role);
+      // console.log({ email, username, password, role_id: roleNr });
+      registerUser({ email, username, password, role_id: roleNr }).then(res => {
         console.log(res);
         if (res === 422) {
           return;
