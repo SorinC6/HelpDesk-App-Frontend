@@ -27,7 +27,7 @@ const Card = styled.div`
   animation-timing-function: ease-out;
   animation-delay: 0;
   animation-direction: alternate;
-  animation-iteration-count: 4;
+  animation-iteration-count: 1;
   animation-fill-mode: none;
   animation-play-state: running;
 

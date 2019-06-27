@@ -14,6 +14,7 @@ const Home = ({ getAllTickets, loading, tickets }) => {
       <Header />
       //filter component
       <TicketList loading={loading} tickets={tickets} />
+      
     </div>
   );
 };
