@@ -8476,6 +8476,13 @@ react-app-polyfill@^1.0.1:
     regenerator-runtime "0.13.2"
     whatwg-fetch "3.0.0"
 
+react-awesome-spinners@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-awesome-spinners/-/react-awesome-spinners-1.1.2.tgz#e153264ae0bda4c90795021a0121adf15c738238"
+  integrity sha512-m9Zq+r4azcQmTM5ICvYotUji8t3UEc8BvFxOhbcPgkljiyZmi6hm6zbFbr487RgtbddImMn+qqbqWBXCE3WypA==
+  dependencies:
+    styled-components "^4.2.0"
+
 react-dev-utils@^9.0.1:
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-9.0.1.tgz#5c03d85a0b2537d0c46af7165c24a7dfb274bef2"
@@ -9765,7 +9772,7 @@ style-loader@0.23.1:
     loader-utils "^1.1.0"
     schema-utils "^1.0.0"
 
-styled-components@^4.3.2:
+styled-components@^4.2.0, styled-components@^4.3.2:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-4.3.2.tgz#4ca81918c812d3006f60ac5fdec7d6b64a9509cc"
   integrity sha512-NppHzIFavZ3TsIU3R1omtddJ0Bv1+j50AKh3ZWyXHuFvJq1I8qkQ5mZ7uQgD89Y8zJNx2qRo6RqAH1BmoVafHw==

@@ -5,14 +5,16 @@ import styled from "styled-components";
 import bg from "../assets/register.jpg";
 import Flip from "react-reveal/Flip";
 import theme from "../theme/styledTheme";
+import { Ring } from "react-awesome-spinners";
 
-const Register = ({ registerUser, history }) => {
+const Register = ({ registerUser, history, error, loading }) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("student");
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [errorInput, setError] = useState(null);
+  // const [loading, setLoading] = useState(false);
+  console.log(error);
 
   const options = [
     { key: 1, text: "Student", value: 1 },
@@ -37,13 +39,26 @@ const Register = ({ registerUser, history }) => {
     }
   };
 
+  const fromStringToNumber = string => {
+    switch (string) {
+      case "Student":
+        return 1;
+      case "Helper":
+        return 2;
+      case "Admin":
+        return 3;
+      default:
+        return 1;
+    }
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
     if (formValid()) {
       setError("");
-
-      console.log({ email, username, password, role_id: 1 });
-      registerUser({ email, username, password, role_id: 1 }).then(res => {
+      const roleNr = fromStringToNumber(role);
+      // console.log({ email, username, password, role_id: roleNr });
+      registerUser({ email, username, password, role_id: roleNr }).then(res => {
         console.log(res);
         if (res === 422) {
           return;
@@ -98,16 +113,19 @@ const Register = ({ registerUser, history }) => {
               size="small"
               style={{ width: 150 }}
               type="submit"
+              loading={loading}
             >
               Register
             </Button>
-            {error && (
+            {errorInput && (
               <Message error>
                 <div>
-                  <p>{error}</p>
+                  <p>{errorInput}</p>
                 </div>
               </Message>
             )}
+            {loading && <Ring />}
+            {error && <Message>{error}</Message>}
             <Message>
               Aleardy a user? <Link to="/login">Login</Link>
             </Message>
@@ -135,8 +153,13 @@ const RegisterScreen = styled.div`
   justify-content: center;
   align-items: center;
   background-image: url(${bg});
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   background-size: cover;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    height: 100%;
+  }
 `;
 
 const RegisterCard = styled.div`
@@ -147,6 +170,10 @@ const RegisterCard = styled.div`
   background: ${theme.color.accentGreen};
   opacity: 0.6;
   box-shadow: ${theme.shadow.cardShadow};
+  @media (max-width: 1000px) {
+    height: 550px;
+    width: 550px;
+  }
 `;
 const Form = styled.form`
   display: flex;
@@ -171,4 +198,10 @@ const Content = styled.div`
   color: ${theme.color.textColor};
   letter-spacing: 1px;
   line-height: 1.4;
+
+  @media (max-width: 1000px) {
+    position: relative;
+    max-width: 500px;
+    margin: 10px auto;
+  }
 `;

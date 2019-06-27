@@ -33,16 +33,19 @@ export const authReducer = (state = initialState, action) => {
       };
     case types.REGISTER_FAIL:
       return {
+        ...state,
         loading: false,
         error: action.payload
       };
     case types.LOGIN_FAIL:
       return {
+        ...state,
         loading: false,
         error: action.payload
       };
     case types.LOADING_STOP:
       return {
+        ...state,
         loading: false
       };
     default:

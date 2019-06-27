@@ -5,12 +5,13 @@ import styled from "styled-components";
 import bg from "../assets/login.jpg";
 import Flip from "react-reveal/Flip";
 import theme from "../theme/styledTheme";
+import { Ring } from "react-awesome-spinners";
 
-const Login = ({ loginUser, history }) => {
+const Login = ({ loginUser, history, loading, error }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [errorInput, setError] = useState(null);
+  // const [loading, setLoading] = useState(false);
 
   const isFormEmpty = () => {
     if (username.length === 0 || password.length === 0) {
@@ -34,7 +35,6 @@ const Login = ({ loginUser, history }) => {
     if (formValid()) {
       setError(null);
       loginUser({ username, password }).then(status => {
-        debugger;
         if (status === 200) {
           history.push("/");
         }
@@ -67,16 +67,19 @@ const Login = ({ loginUser, history }) => {
               size="small"
               style={{ width: 150 }}
               type="submit"
+              loading={loading}
             >
               Login
             </Button>
-            {error && (
+            {errorInput && (
               <Message error>
                 <div>
-                  <p>{error}</p>
+                  <p>{errorInput}</p>
                 </div>
               </Message>
             )}
+            {loading && <Ring />}
+            {error && <Message>{error}</Message>}
             <Message>
               Don't have an account? <Link to="/register">Register</Link>
             </Message>
@@ -113,6 +116,11 @@ const RegisterScreen = styled.div`
   background-image: url(${bg});
   background-repeat: no-repeat;
   background-size: cover;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    height: 100%;
+  }
 `;
 
 const RegisterCard = styled.div`
@@ -148,4 +156,12 @@ const Content = styled.div`
   color: ${theme.color.textColor};
   letter-spacing: 1px;
   line-height: 1.4;
+
+  @media (max-width: 1000px) {
+    position: relative;
+    max-width: 500px;
+    margin: 10px auto;
+    background-color: ${theme.color.lightPurple};
+    opacity: 0.7;
+  }
 `;
