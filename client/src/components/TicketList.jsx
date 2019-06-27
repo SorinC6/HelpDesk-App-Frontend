@@ -10,7 +10,7 @@ const TicketList = ({ loading, tickets }) => {
       {tickets &&
         tickets.map(ticket => {
           return (
-            <Link to={`/tickets/${ticket.id}`}>
+            <Link to={`/tickets/${ticket.id}`} key={ticket.id}>
               <Ticket ticket={ticket} loading={loading} />
             </Link>
           );
