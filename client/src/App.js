@@ -7,7 +7,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import Home from "./components/Home";
 import { connect } from "react-redux";
 import { registerUser, loginUser } from "./store/actions/authActions";
-import Ticket from "./components/TicketList";
+// import Ticket from "./components/TicketList";
 
 function App({ registerUser, loginUser, loading, error }) {
   return (

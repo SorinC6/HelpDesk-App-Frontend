@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Ticket from "./Ticket";
 import styled from "styled-components";
 
-const TicketList = () => {
+const TicketList = ({ getAllTickets }) => {
+  useEffect(() => {
+    getAllTickets();
+  }, []);
   return (
     <TicketsWrapper>
       <Ticket />

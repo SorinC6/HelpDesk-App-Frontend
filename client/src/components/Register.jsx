@@ -47,6 +47,8 @@ const Register = ({ registerUser, history, error, loading }) => {
         return 2;
       case "Admin":
         return 3;
+      default:
+        return 1;
     }
   };
 

@@ -39,7 +39,7 @@ export const loginUser = userData => dispatch => {
   return axios
     .post(`${url.loginUrl}`, userData)
     .then(res => {
-      localStorage.setItem("token", res.data);
+      localStorage.setItem("token", res.data.token);
       dispatch({ type: types.LOGIN_SUCCESS, payload: res.token });
       return res.status;
     })
