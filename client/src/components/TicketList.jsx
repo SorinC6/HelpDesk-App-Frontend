@@ -2,17 +2,12 @@ import React, { useEffect } from "react";
 import Ticket from "./Ticket";
 import styled from "styled-components";
 
-const TicketList = ({ getAllTickets }) => {
-  useEffect(() => {
-    getAllTickets();
-  }, []);
+const TicketList = ({ loading, tickets }) => {
+  //
   return (
     <TicketsWrapper>
-      <Ticket />
-      <Ticket />
-      <Ticket />
-      <Ticket />
-      <Ticket />
+      {tickets &&
+        tickets.map(ticket => <Ticket ticket={ticket} loading={loading} />)}
     </TicketsWrapper>
   );
 };
