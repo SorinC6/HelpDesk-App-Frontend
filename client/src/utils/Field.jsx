@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import theme from "../theme/styledTheme";
 
 const Field = ({ name, backgroundColor }) => {
   return (

@@ -2,26 +2,29 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../theme/styledTheme";
 import Field from "../utils/Field";
+import Flip from "react-reveal/Flip";
 
 const Ticket = () => {
   return (
-    <MainWrapper>
-      <Field name="Title" backgroundColor={`${theme.color.lightGreen}`} />
-      <Field
-        name="Category"
-        backgroundColor={`${theme.color.secondaryPurple}`}
-      />
-      <Field name="User" backgroundColor={`${theme.color.accentGreen}`} />
-      <Field name="Status" backgroundColor={`${theme.color.accentPurple}`} />
-    </MainWrapper>
+    <Flip bottom>
+      <MainWrapper>
+        <Field name="Title" backgroundColor={`${theme.color.lightGreen}`} />
+        <Field
+          name="Category"
+          backgroundColor={`${theme.color.secondaryPurple}`}
+        />
+        <Field name="User" backgroundColor={`${theme.color.accentGreen}`} />
+        <Field name="Status" backgroundColor={`${theme.color.accentPurple}`} />
+      </MainWrapper>
+    </Flip>
   );
 };
 
 export default Ticket;
 
 const MainWrapper = styled.div`
-  height: 400px;
-  width: 400px;
+  height: 300px;
+  width: 300px;
   margin: 30px;
   border: 10px solid ${theme.color.secondaryPurple};
   border-radius: 50%;

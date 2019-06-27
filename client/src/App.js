@@ -7,14 +7,12 @@ import PrivateRoute from "./utils/PrivateRoute";
 import Home from "./components/Home";
 import { connect } from "react-redux";
 import { registerUser, loginUser } from "./store/actions/authActions";
-import Ticket from "./components/Ticket";
+import Ticket from "./components/TicketList";
 
 function App({ registerUser, loginUser, loading, error }) {
-  console.log("ERROROROR ", error);
   return (
     <div>
       <div>
-        {/* <Route exact path="/" component={Home} /> */}
         <Route
           path="/register"
           render={props => (

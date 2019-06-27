@@ -39,6 +39,8 @@ const Register = ({ registerUser, history, error, loading }) => {
     }
   };
 
+  const fromStringToNumber
+
   const handleSubmit = e => {
     e.preventDefault();
     if (formValid()) {
