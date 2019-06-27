@@ -3,7 +3,6 @@ import Header from "./Header";
 import TicketList from "./TicketList";
 import { connect } from "react-redux";
 import { getAllTickets } from "../store/actions/ticketAction";
-import { ticketReducer } from "../store/reducers/ticketReducer";
 
 const Home = ({ getAllTickets, loading, tickets }) => {
   useEffect(() => {
@@ -14,7 +13,7 @@ const Home = ({ getAllTickets, loading, tickets }) => {
       <Header />
       //filter component
       <TicketList loading={loading} tickets={tickets} />
-      
+
     </div>
   );
 };

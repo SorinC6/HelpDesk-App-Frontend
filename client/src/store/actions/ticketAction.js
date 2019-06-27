@@ -42,3 +42,7 @@ export const getAllTickets = () => dispatch => {
     })
     .finally(dispatch(loadingStop()));
 };
+
+export const getTicketByID = id => dispatch => {
+  debugger;
+};

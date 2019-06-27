@@ -14,6 +14,8 @@ const Ticket = ({ loading, ticket }) => {
         return "violet";
       case "fixed":
         return "green";
+      default:
+        return "white";
     }
   };
 

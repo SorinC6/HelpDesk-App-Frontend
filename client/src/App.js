@@ -36,10 +36,7 @@ function App({ registerUser, loginUser, loading, error, tickets }) {
           )}
         />
 
-        <Route
-          path="/tickets/:id"
-          render={props => <SingleTicket {...props} tickets={tickets} />}
-        />
+        <PrivateRoute path="/tickets/:id" component={SingleTicket} />
 
         <PrivateRoute exact path="/" component={Home} />
       </div>
