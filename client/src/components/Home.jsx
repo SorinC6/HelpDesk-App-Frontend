@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Header from "./Header";
 import TicketList from "./TicketList";
+import Filter from "./FIlter";
 import { connect } from "react-redux";
 import { getAllTickets } from "../store/actions/ticketAction";
 
@@ -11,9 +12,8 @@ const Home = ({ getAllTickets, loading, tickets }) => {
   return (
     <div>
       <Header />
-      //filter component
+      <Filter />
       <TicketList loading={loading} tickets={tickets} />
-
     </div>
   );
 };

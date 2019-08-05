@@ -3,12 +3,11 @@ import Header from "./Header";
 import styled from "styled-components";
 import SingleCard from "./SingleCard";
 import { connect } from "react-redux";
-import { getAllTickets, getTicketByID } from "../store/actions/ticketAction";
+import { getAllTickets } from "../store/actions/ticketAction";
 
 const SingleTicket = ({ tickets, match, getAllTickets }) => {
   useEffect(() => {
     getAllTickets();
-    console.log("ssdsds");
   }, []);
 
   const currentId = parseInt(match.params.id);
@@ -41,8 +40,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  getAllTickets,
-  getTicketByID
+  getAllTickets
 };
 
 export default connect(
@@ -52,4 +50,4 @@ export default connect(
 
 const CardView = styled.div``;
 
-const Description = styled.div``;
+

@@ -14,7 +14,6 @@ const Register = ({ registerUser, history, error, loading }) => {
   const [role, setRole] = useState("student");
   const [errorInput, setError] = useState(null);
   // const [loading, setLoading] = useState(false);
-  console.log(error);
 
   const options = [
     { key: 1, text: "Student", value: 1 },
@@ -57,7 +56,7 @@ const Register = ({ registerUser, history, error, loading }) => {
     if (formValid()) {
       setError("");
       const roleNr = fromStringToNumber(role);
-      // console.log({ email, username, password, role_id: roleNr });
+       console.log({ email, username, password, role_id: roleNr });
       registerUser({ email, username, password, role_id: roleNr }).then(res => {
         console.log(res);
         if (res === 422) {
