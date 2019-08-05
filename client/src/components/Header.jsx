@@ -9,7 +9,7 @@ const Header = () => {
     <HeaderWrap>
       <img src={logo} alt={logo} />
       <RoundCard name="Create" />
-      <RoundCard name="Tickets" />
+      <RoundCard name="Tickets" path="/" />
       <RoundCard name="User" />
     </HeaderWrap>
   );

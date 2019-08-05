@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../theme/styledTheme";
+import { NavLink } from "react-router-dom";
 
-const RoundCard = ({ name }) => {
+const RoundCard = ({ name, path }) => {
   return (
-
-    <Card>
+    <Card to={path}>
       <h3>{name}</h3>
     </Card> //https://codepen.io/team/css-tricks/pen/EjaJNd
   );
@@ -13,7 +13,7 @@ const RoundCard = ({ name }) => {
 
 export default RoundCard;
 
-const Card = styled.div`
+const Card = styled(NavLink)`
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -27,9 +27,14 @@ const Card = styled.div`
   animation-timing-function: ease-out;
   animation-delay: 0;
   animation-direction: alternate;
-  animation-iteration-count: 4;
+  animation-iteration-count: 1;
   animation-fill-mode: none;
   animation-play-state: running;
+
+  &.active {
+    color: black;
+    background-color: #6ed3cf;
+  }
 
   @keyframes stretch {
     0% {

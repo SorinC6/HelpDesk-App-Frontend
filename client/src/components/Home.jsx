@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import Header from "./Header";
 import TicketList from "./TicketList";
+import Filter from "./FIlter";
 import { connect } from "react-redux";
 import { getAllTickets } from "../store/actions/ticketAction";
-import { ticketReducer } from "../store/reducers/ticketReducer";
 
 const Home = ({ getAllTickets, loading, tickets }) => {
   useEffect(() => {
@@ -12,7 +12,7 @@ const Home = ({ getAllTickets, loading, tickets }) => {
   return (
     <div>
       <Header />
-      //filter component
+      <Filter tickets={tickets} />
       <TicketList loading={loading} tickets={tickets} />
     </div>
   );
