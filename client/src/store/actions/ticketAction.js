@@ -43,6 +43,10 @@ export const getAllTickets = () => dispatch => {
     .finally(dispatch(loadingStop()));
 };
 
+export const getHelpingTickets = () => dispatch => {
+  dispatch({ type: types.GET_HELPING_TICKETS });
+};
+
 export const getTicketByID = id => dispatch => {
   debugger;
 };

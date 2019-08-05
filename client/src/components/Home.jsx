@@ -12,7 +12,7 @@ const Home = ({ getAllTickets, loading, tickets }) => {
   return (
     <div>
       <Header />
-      <Filter />
+      <Filter tickets={tickets} />
       <TicketList loading={loading} tickets={tickets} />
     </div>
   );

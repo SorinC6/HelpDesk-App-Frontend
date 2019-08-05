@@ -31,6 +31,12 @@ export const ticketReducer = (state = initialState, action) => {
         loading: false,
         error: null
       };
+    case types.GET_HELPING_TICKETS:
+      return {
+        tickets: state.tickets.filter(ticket => {
+          return ticket.status === "helping";
+        })
+      };
     default:
       return state;
   }
