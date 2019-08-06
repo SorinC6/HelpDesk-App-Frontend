@@ -9,30 +9,17 @@ import {
 } from "../store/actions/ticketAction";
 
 const Filter = props => {
-  const showAllTickets = () => {
-    props.getAllTickets();
-  };
-  const showHelpingTickets = () => {
-    props.getHelpingTickets();
-  };
-  const showPendingTickets = () => {
-    props.getPendingTickets();
-  };
-  const showFixedTickets = () => {
-    props.getFixedTickets();
-  };
-
   return (
     <Root>
       <TicketFilter>
-        <button onClick={showAllTickets}>All Tickets</button>
-        <button onClick={showPendingTickets}>Pending</button>
-        <button onClick={showHelpingTickets}>Helping</button>
-        <button onClick={showFixedTickets}>Fixed</button>
+        <button onClick={props.getAllTickets}>All Tickets</button>
+        <button onClick={props.getPendingTickets}>Pending</button>
+        <button onClick={props.getHelpingTickets}>Helping</button>
+        <button onClick={props.getFixedTickets}>Fixed</button>
       </TicketFilter>
 
       <UserFilter>
-        <button>All Users</button>
+        <button onClick={props.getAllTickets}>All Users</button>
         <button>My Ticket</button>
         <button>Helping Tickets</button>
       </UserFilter>

@@ -4,9 +4,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const TicketList = ({ loading, tickets, filteredTickets }) => {
-  //
-  console.log("FIltered Tickets ", filteredTickets);
-  console.log("Tickets ", tickets);
   return (
     <TicketsWrapper>
       {filteredTickets
