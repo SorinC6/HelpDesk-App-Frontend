@@ -1,30 +1,51 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { ModalHeader } from "semantic-ui-react";
+import { FaRegWindowClose } from "react-icons/fa";
 
-const Modal = ({ show, toggle, type }) => {
+const Modal = ({ show, toggle, type, children }) => {
   let modalFooter;
   let modalHeader;
+  let modalBody;
 
-  if (type === "addModal") {
-    modalFooter = (
-      <>
-        <button>Add Ticket</button>
-        <button onClick={toggle}>Cancel</button>
-      </>
-    );
-    modalHeader = (
-      <>
-        <h1>Create ticket</h1>
-      </>
-    );
+  switch (type) {
+    case "addModal":
+      modalHeader = (
+        <>
+          <Title>Create ticket</Title>
+          <CloseButton onClick={toggle}>X</CloseButton>
+        </>
+      );
+      modalBody = <>{children}</>;
+      modalFooter = (
+        <>
+          <button>Add Ticket</button>
+          <button onClick={toggle}>Cancel</button>
+        </>
+      );
+      break;
+    case "warning":
+      modalHeader = (
+        <>
+          <Title>Warning</Title>
+          <CloseButton onClick={toggle}>X</CloseButton>
+        </>
+      );
+      modalBody = <p>This is a warning or a Alert </p>;
+      modalFooter = (
+        <>
+          <button>Confirm</button>
+          <button onClick={toggle}>Cancel</button>
+        </>
+      );
+      break;
   }
+
   return (
     <>
       <Backdrop show={show} onClick={toggle} />
       <Container show={show}>
         <Header>{modalHeader}</Header>
-        <p>Body here</p>
+        <Body>{modalBody}</Body>
         <Footer>{modalFooter}</Footer>
       </Container>
     </>
@@ -127,5 +148,33 @@ export const CancelBtn = styled(Button)`
   &:hover {
     background: white;
     color: darkred;
+  }
+`;
+
+const Title = styled.h3`
+  color: white;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+`;
+const CloseButton = styled(FaRegWindowClose)`
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  &:hover,
+  &:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+  }
+`;
+
+const Body = styled.div`
+  padding: 1rem 1.5rem;
+  font-size: 1.6rem;
+  color: "black";
+  p {
+    text-align: center;
+    padding: 1rem;
   }
 `;
