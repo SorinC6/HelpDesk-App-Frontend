@@ -4,11 +4,11 @@ import theme from "../theme/styledTheme";
 import RoundCard from "./RoundCard";
 import logo from "../assets/logo.png";
 
-const Header = () => {
+const Header = props => {
   return (
     <HeaderWrap>
       <img src={logo} alt={logo} />
-      <RoundCard name="Create" path="/" />
+      <div onClick={props.toggleModle}>Create Ticket</div>
       <RoundCard name="Tickets" path="/" />
       <RoundCard name="User" path="/" />
     </HeaderWrap>
