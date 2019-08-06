@@ -4,7 +4,8 @@ const initialState = () => {
   return {
     loading: false,
     error: null,
-    tickets: null
+    tickets: [],
+    filteredTickets: []
   };
 };
 
@@ -33,10 +34,23 @@ export const ticketReducer = (state = initialState, action) => {
       };
     case types.GET_HELPING_TICKETS:
       return {
-        tickets: state.tickets.filter(ticket => {
+        ...state,
+        filteredTickets: state.tickets.filter(ticket => {
           return ticket.status === "helping";
         })
       };
+    // case types.GET_PENDING_TICKETS:
+    //   return {
+    //     tickets: state.tickets.map(ticket => {
+    //       return ticket.status === "pending";
+    //     })
+    //   };
+    // case types.GET_FIXED_TICKETS:
+    //   return {
+    //     tickets: state.tickets.map(ticket => {
+    //       return ticket.status === "fixed";
+    //     })
+    //   };
     default:
       return state;
   }

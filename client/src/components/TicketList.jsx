@@ -3,18 +3,29 @@ import Ticket from "./Ticket";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const TicketList = ({ loading, tickets }) => {
+const TicketList = ({ loading, tickets, filteredTickets }) => {
   //
+  console.log("FIltered Tickets ", filteredTickets);
+  console.log("Tickets ", tickets);
   return (
     <TicketsWrapper>
-      {tickets &&
-        tickets.map(ticket => {
-          return (
-            <Link to={`/tickets/${ticket.id}`} key={ticket.id}>
-              <Ticket ticket={ticket} loading={loading} />
-            </Link>
-          );
-        })}
+      {filteredTickets
+        ? filteredTickets &&
+          filteredTickets.map(ticket => {
+            return (
+              <Link to={`/tickets/${ticket.id}`} key={ticket.id}>
+                <Ticket ticket={ticket} loading={loading} />
+              </Link>
+            );
+          })
+        : tickets &&
+          tickets.map(ticket => {
+            return (
+              <Link to={`/tickets/${ticket.id}`} key={ticket.id}>
+                <Ticket ticket={ticket} loading={loading} />
+              </Link>
+            );
+          })}
     </TicketsWrapper>
   );
 };

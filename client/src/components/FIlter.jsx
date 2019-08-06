@@ -3,7 +3,9 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import {
   getAllTickets,
-  getHelpingTickets
+  getHelpingTickets,
+  getPendingTickets,
+  getFixedTickets
 } from "../store/actions/ticketAction";
 
 const Filter = props => {
@@ -13,8 +15,12 @@ const Filter = props => {
   const showHelpingTickets = () => {
     props.getHelpingTickets();
   };
-  const showPendingTickets = () => {};
-  const showFixedTickets = () => {};
+  const showPendingTickets = () => {
+    props.getPendingTickets();
+  };
+  const showFixedTickets = () => {
+    props.getFixedTickets();
+  };
 
   return (
     <Root>
@@ -36,7 +42,9 @@ const Filter = props => {
 
 const mapDIspatchToProps = {
   getAllTickets,
-  getHelpingTickets
+  getHelpingTickets,
+  getFixedTickets,
+  getPendingTickets
 };
 
 export default connect(
