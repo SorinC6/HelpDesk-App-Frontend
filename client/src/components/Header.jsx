@@ -8,9 +8,9 @@ const Header = () => {
   return (
     <HeaderWrap>
       <img src={logo} alt={logo} />
-      <RoundCard name="Create" />
+      <RoundCard name="Create" path="/" />
       <RoundCard name="Tickets" path="/" />
-      <RoundCard name="User" />
+      <RoundCard name="User" path="/" />
     </HeaderWrap>
   );
 };

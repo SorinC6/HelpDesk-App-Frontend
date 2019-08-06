@@ -5,7 +5,7 @@ import Filter from "./FIlter";
 import { connect } from "react-redux";
 import { getAllTickets } from "../store/actions/ticketAction";
 
-const Home = ({ getAllTickets, loading, tickets }) => {
+const Home = ({ getAllTickets, loading, tickets, filteredTickets }) => {
   useEffect(() => {
     getAllTickets();
   }, []);
@@ -13,7 +13,11 @@ const Home = ({ getAllTickets, loading, tickets }) => {
     <div>
       <Header />
       <Filter tickets={tickets} />
-      <TicketList loading={loading} tickets={tickets} />
+      <TicketList
+        loading={loading}
+        tickets={tickets}
+        filteredTickets={filteredTickets}
+      />
     </div>
   );
 };
@@ -21,7 +25,8 @@ const Home = ({ getAllTickets, loading, tickets }) => {
 const mapStateToProps = state => {
   return {
     tickets: state.ticketReducer.tickets,
-    loading: state.ticketReducer.loading
+    loading: state.ticketReducer.loading,
+    filteredTickets: state.ticketReducer.filteredTickets
   };
 };
 

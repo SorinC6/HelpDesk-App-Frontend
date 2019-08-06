@@ -3,30 +3,23 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import {
   getAllTickets,
-  getHelpingTickets
+  getHelpingTickets,
+  getPendingTickets,
+  getFixedTickets
 } from "../store/actions/ticketAction";
 
 const Filter = props => {
-  const showAllTickets = () => {
-    props.getAllTickets();
-  };
-  const showHelpingTickets = () => {
-    props.getHelpingTickets();
-  };
-  const showPendingTickets = () => {};
-  const showFixedTickets = () => {};
-
   return (
     <Root>
       <TicketFilter>
-        <button onClick={showAllTickets}>All Tickets</button>
-        <button onClick={showPendingTickets}>Pending</button>
-        <button onClick={showHelpingTickets}>Helping</button>
-        <button onClick={showFixedTickets}>Fixed</button>
+        <button onClick={props.getAllTickets}>All Tickets</button>
+        <button onClick={props.getPendingTickets}>Pending</button>
+        <button onClick={props.getHelpingTickets}>Helping</button>
+        <button onClick={props.getFixedTickets}>Fixed</button>
       </TicketFilter>
 
       <UserFilter>
-        <button>All Users</button>
+        <button onClick={props.getAllTickets}>All Users</button>
         <button>My Ticket</button>
         <button>Helping Tickets</button>
       </UserFilter>
@@ -36,7 +29,9 @@ const Filter = props => {
 
 const mapDIspatchToProps = {
   getAllTickets,
-  getHelpingTickets
+  getHelpingTickets,
+  getFixedTickets,
+  getPendingTickets
 };
 
 export default connect(

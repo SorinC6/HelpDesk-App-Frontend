@@ -46,7 +46,9 @@ export const getAllTickets = () => dispatch => {
 export const getHelpingTickets = () => dispatch => {
   dispatch({ type: types.GET_HELPING_TICKETS });
 };
-
-export const getTicketByID = id => dispatch => {
-  debugger;
+export const getPendingTickets = () => dispatch => {
+  dispatch({ type: types.GET_PENDING_TICKETS });
+};
+export const getFixedTickets = () => dispatch => {
+  dispatch({ type: types.GET_FIXED_TICKETS });
 };

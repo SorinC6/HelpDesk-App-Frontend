@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import { connect } from "react-redux";
 import { registerUser, loginUser } from "./store/actions/authActions";
 import SingleTicket from "./components/SingleTicket";
+import CreateTicket from "./components/TestTicketIdeea/CreateTicket";
 
 function App({ registerUser, loginUser, loading, error, tickets }) {
   return (
@@ -39,6 +40,7 @@ function App({ registerUser, loginUser, loading, error, tickets }) {
         <PrivateRoute path="/tickets/:id" component={SingleTicket} />
 
         <PrivateRoute exact path="/" component={Home} />
+        <PrivateRoute exact path="/create" component={CreateTicket} />
       </div>
     </div>
   );
