@@ -39,18 +39,20 @@ export const ticketReducer = (state = initialState, action) => {
           return ticket.status === "helping";
         })
       };
-    // case types.GET_PENDING_TICKETS:
-    //   return {
-    //     tickets: state.tickets.map(ticket => {
-    //       return ticket.status === "pending";
-    //     })
-    //   };
-    // case types.GET_FIXED_TICKETS:
-    //   return {
-    //     tickets: state.tickets.map(ticket => {
-    //       return ticket.status === "fixed";
-    //     })
-    //   };
+    case types.GET_PENDING_TICKETS:
+      return {
+        ...state,
+        filteredTickets: state.tickets.filter(ticket => {
+          return ticket.status === "pending";
+        })
+      };
+    case types.GET_FIXED_TICKETS:
+      return {
+        ...state,
+        filteredTickets: state.tickets.filter(ticket => {
+          return ticket.status === "fixed";
+        })
+      };
     default:
       return state;
   }
