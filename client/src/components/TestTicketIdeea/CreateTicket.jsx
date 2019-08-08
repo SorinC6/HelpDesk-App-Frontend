@@ -13,7 +13,9 @@ const CreateTicket = ({ showModal, toggleModle }) => {
   return (
     <div>
       <h1>Create a ticket</h1>
-      <Modal show={showModal} toggle={toggleModle} type="addModal" />
+      <Modal show={showModal} toggle={toggleModle} type="addModal">
+        
+      </Modal>
     </div>
   );
 };
