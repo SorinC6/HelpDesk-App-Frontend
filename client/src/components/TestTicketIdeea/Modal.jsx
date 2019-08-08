@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { FaRegWindowClose } from "react-icons/fa";
+import delImg from "../../assets/delete.png";
 
 const Modal = ({ show, toggle, type, children }) => {
   let modalFooter;
@@ -12,7 +13,9 @@ const Modal = ({ show, toggle, type, children }) => {
       modalHeader = (
         <>
           <Title>Create ticket</Title>
-          <CloseButton onClick={toggle}>X</CloseButton>
+          <CloseButton onClick={toggle}>
+            <img src={delImg} alt="" />
+          </CloseButton>
         </>
       );
       modalBody = <>{children}</>;

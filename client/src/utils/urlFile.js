@@ -1,3 +1,3 @@
-export const registerUrl = "http://localhost:5000/register";
-export const loginUrl = "http://localhost:5000/login";
-export const getTickets = "http://localhost:5000/tickets";
+export const registerUrl = "https://helpdeskq.herokuapp.com/register";
+export const loginUrl = "https://helpdeskq.herokuapp.com/login";
+export const getTickets = "https://helpdeskq.herokuapp.com/tickets";
