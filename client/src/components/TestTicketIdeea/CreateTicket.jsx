@@ -14,7 +14,12 @@ const CreateTicket = ({ showModal, toggleModle }) => {
     <div>
       <h1>Create a ticket</h1>
       <Modal show={showModal} toggle={toggleModle} type="addModal">
-        
+        <form>
+          <input placeholder="title" />
+          <input placeholder="description" />
+          <input placeholder="what I've tried" />
+          <input placeholder="category" />
+        </form>
       </Modal>
     </div>
   );
